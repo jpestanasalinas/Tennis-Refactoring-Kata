@@ -13,8 +13,8 @@ public class TennisGame3 implements TennisGame {
     }
 
     public String getScore() {
-        boolean notEndGame = pointsPlayer1 < 4 && pointsPlayer2 < 4 && !(pointsPlayer1 + pointsPlayer2 == 6);
-        if (notEndGame) {
+        boolean endGame = !(pointsPlayer1 < 4 && pointsPlayer2 < 4 && !(pointsPlayer1 + pointsPlayer2 == 6));
+        if (!endGame) {
             String score = SCORE_NAMES[pointsPlayer1];
             if (pointsPlayer1 == pointsPlayer2)
                 return score + "-All";
