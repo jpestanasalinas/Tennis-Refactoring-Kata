@@ -1,15 +1,10 @@
 
 public class TennisGame1 implements TennisGame {
 
-    private String player1Name;
-    private String player2Name;
-
     private Player player1;
     private Player player2;
 
     public TennisGame1(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
         this.player1 = new Player(player1Name);
         this.player2 = new Player(player2Name);
     }
