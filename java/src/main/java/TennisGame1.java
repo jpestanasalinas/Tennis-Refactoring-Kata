@@ -6,11 +6,16 @@ public class TennisGame1 implements TennisGame {
     private String player1Name;
     private String player2Name;
 
+    private Player player1;
+    private Player player2;
+
     public TennisGame1(String player1Name, String player2Name) {
         player1Scoring = 0;
         player2Scoring = 0;
         this.player1Name = player1Name;
         this.player2Name = player2Name;
+        this.player1 = new Player(player1Name);
+        this.player2 = new Player(player2Name);
     }
 
     public void wonPoint(String playerName) {
@@ -75,4 +80,14 @@ public class TennisGame1 implements TennisGame {
     private boolean draft() {
         return player1Scoring == player2Scoring;
     }
+    public class Player {
+        private final String name;
+        private int score;
+
+        public Player(String name) {
+            this.score = 0;
+            this.name = name;
+        }
+    }
+
 }
