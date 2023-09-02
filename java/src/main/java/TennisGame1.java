@@ -24,11 +24,11 @@ public class TennisGame1 implements TennisGame {
         String score = "";
         if (draft()) {
             return draftScore();
-        } else if ((player1Scoring >=4 || player2Scoring >=4) && Math.abs(scoreDifference()) == 1) {
-            if (scoreDifference() == 1) return "Advantage player1";
+        } else if ((player1Scoring >=4 || player2Scoring >=4) && Math.abs(player1ScoreDifference()) == 1) {
+            if (player1ScoreDifference() == 1) return "Advantage player1";
             else return "Advantage player2";
-        } else if ((player1Scoring >=4 || player2Scoring >=4) && Math.abs(scoreDifference()) > 1) {
-            if (scoreDifference() >= 2) return "Win for player1";
+        } else if ((player1Scoring >=4 || player2Scoring >=4) && Math.abs(player1ScoreDifference()) > 1) {
+            if (player1ScoreDifference() >= 2) return "Win for player1";
             else return "Win for player2";
         } else {
             int tempScore;
@@ -56,7 +56,7 @@ public class TennisGame1 implements TennisGame {
         return score;
     }
 
-    private int scoreDifference() {
+    private int player1ScoreDifference() {
         return player1Scoring - player2Scoring;
     }
 
