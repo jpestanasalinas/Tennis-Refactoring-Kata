@@ -3,12 +3,12 @@ public class TennisGame3 implements TennisGame {
     
     private int p2;
     private int p1;
-    private String p1N;
-    private String p2N;
+    private String player1Name;
+    private String player2Name;
 
     public TennisGame3(String player1Name, String player2Name) {
-        this.p1N = player1Name;
-        this.p2N = player2Name;
+        this.player1Name = player1Name;
+        this.player2Name = player2Name;
     }
 
     public String getScore() {
@@ -20,7 +20,7 @@ public class TennisGame3 implements TennisGame {
         } else {
             if (p1 == p2)
                 return "Deuce";
-            s = p1 > p2 ? p1N : p2N;
+            s = p1 > p2 ? player1Name : player2Name;
             return ((p1-p2)*(p1-p2) == 1) ? "Advantage " + s : "Win for " + s;
         }
     }
