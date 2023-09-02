@@ -57,7 +57,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private int player1ScoreDifference() {
-        return player1.score - player2.score;
+        return player1.scoreDifferenceWith(player2);
     }
 
     private String draftScore() {
@@ -70,7 +70,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean draft() {
-        return player1.score == player2.score;
+        return player1.sameScore(player2);
     }
     public class Player {
         private final String name;
@@ -83,6 +83,10 @@ public class TennisGame1 implements TennisGame {
 
         public boolean sameScore(Player other) {
             return this.score == other.score;
+        }
+
+        public int scoreDifferenceWith(Player other) {
+            return this.score - other.score;
         }
 
         public void addPoint() {
