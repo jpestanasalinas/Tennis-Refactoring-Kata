@@ -6,9 +6,9 @@ public class TennisGame3 implements TennisGame {
     private String p1N;
     private String p2N;
 
-    public TennisGame3(String p1N, String p2N) {
-        this.p1N = p1N;
-        this.p2N = p2N;
+    public TennisGame3(String player1Name, String player2Name) {
+        this.p1N = player1Name;
+        this.p2N = player2Name;
     }
 
     public String getScore() {
