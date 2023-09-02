@@ -35,11 +35,11 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean advantagePhase() {
-        return somePlayerExceedsFiftyThreshold() && Math.abs(player1ScoreDifference()) == 1;
+        return somePlayerExceedsFiftyThreshold() && player1.absoluteScoreDifferenceWith(player2) == 1;
     }
 
     private boolean finishedGame() {
-        return somePlayerExceedsFiftyThreshold() && Math.abs(player1ScoreDifference()) > 1;
+        return somePlayerExceedsFiftyThreshold() && player1.absoluteScoreDifferenceWith(player2) > 1;
     }
 
     private boolean somePlayerExceedsFiftyThreshold() {
@@ -72,6 +72,7 @@ public class TennisGame1 implements TennisGame {
     private boolean draft() {
         return player1.sameScore(player2);
     }
+
     public static class Player {
         private final String name;
         private int score;
@@ -87,6 +88,9 @@ public class TennisGame1 implements TennisGame {
 
         public int scoreDifferenceWith(Player other) {
             return this.score - other.score;
+        }
+        public int absoluteScoreDifferenceWith(Player other) {
+            return Math.abs(this.score - other.score);
         }
 
         public void addPoint() {
