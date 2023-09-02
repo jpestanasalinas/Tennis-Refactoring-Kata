@@ -72,7 +72,7 @@ public class TennisGame1 implements TennisGame {
     private boolean draft() {
         return player1.sameScore(player2);
     }
-    public class Player {
+    public static class Player {
         private final String name;
         private int score;
 
