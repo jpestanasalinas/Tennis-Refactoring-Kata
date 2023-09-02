@@ -23,27 +23,9 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         String score = "";
         int tempScore=0;
-        if (player1Scoring == player2Scoring)
-        {
-            switch (player1Scoring)
-            {
-                case 0:
-                        score = "Love-All";
-                    break;
-                case 1:
-                        score = "Fifteen-All";
-                    break;
-                case 2:
-                        score = "Thirty-All";
-                    break;
-                default:
-                        score = "Deuce";
-                    break;
-                
-            }
-        }
-        else if (player1Scoring >=4 || player2Scoring >=4)
-        {
+        if (draft()) {
+            return draftScore();
+        } else if (player1Scoring >=4 || player2Scoring >=4) {
             int minusResult = player1Scoring - player2Scoring;
             if (minusResult==1) score ="Advantage player1";
             else if (minusResult ==-1) score ="Advantage player2";
@@ -74,5 +56,18 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score;
+    }
+
+    private String draftScore() {
+        return switch (player1Scoring) {
+            case 0 -> "Love-All";
+            case 1 -> "Fifteen-All";
+            case 2 -> "Thirty-All";
+            default -> "Deuce";
+        };
+    }
+
+    private boolean draft() {
+        return player1Scoring == player2Scoring;
     }
 }
