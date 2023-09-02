@@ -13,17 +13,15 @@ public class TennisGame3 implements TennisGame {
     }
 
     public String getScore() {
-        if (!isEndGame()) {
-            return temporalScore();
-        } else {
-            return finalScore();
-        }
+        if (!isEndGame()) return temporalScore();
+
+        return finalScore();
     }
 
     private String temporalScore() {
-        String score = SCORE_NAMES[pointsPlayer1];
-        if (draft()) return score + "-All";
-        return score + "-" + SCORE_NAMES[pointsPlayer2];
+        if (draft()) return SCORE_NAMES[pointsPlayer1] + "-All";
+
+        return SCORE_NAMES[pointsPlayer1] + "-" + SCORE_NAMES[pointsPlayer2];
     }
 
     private String finalScore() {
