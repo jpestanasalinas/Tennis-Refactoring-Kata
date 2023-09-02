@@ -1,12 +1,14 @@
 
 public class TennisGame1 implements TennisGame {
     
-    private int player1Scoring = 0;
-    private int player2Scoring = 0;
+    private int player1Scoring;
+    private int player2Scoring;
     private String player1Name;
     private String player2Name;
 
     public TennisGame1(String player1Name, String player2Name) {
+        player1Scoring = 0;
+        player2Scoring = 0;
         this.player1Name = player1Name;
         this.player2Name = player2Name;
     }
