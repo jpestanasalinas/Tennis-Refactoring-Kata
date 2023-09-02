@@ -21,7 +21,6 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        String score = "";
         if (draft()) {
             return draftScore();
         } else if ((player1Scoring >=4 || player2Scoring >=4) && Math.abs(player1ScoreDifference()) == 1) {
