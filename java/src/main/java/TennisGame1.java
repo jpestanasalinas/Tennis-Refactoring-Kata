@@ -19,10 +19,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
+        if (playerName == "player1") {
             player1Scoring += 1;
-        else
+            player1.addPoint();
+        } else {
             player2Scoring += 1;
+            player2.addPoint();
+        }
     }
 
     public String getScore() {
@@ -87,6 +90,14 @@ public class TennisGame1 implements TennisGame {
         public Player(String name) {
             this.score = 0;
             this.name = name;
+        }
+
+        public boolean sameScore(Player other) {
+            return this.score == other.score;
+        }
+
+        public void addPoint() {
+            this.score++;
         }
     }
 
