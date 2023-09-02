@@ -31,29 +31,21 @@ public class TennisGame1 implements TennisGame {
             if (player1ScoreDifference() >= 2) return "Win for player1";
             return "Win for player2";
         } else {
-            int tempScore;
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = player1Scoring;
-                else { score+="-"; tempScore = player2Scoring;}
-                switch(tempScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
-                }
-            }
+            String player1ScoreName = playerScoreName(player1Scoring);
+            String player2ScoreName = playerScoreName(player2Scoring);
+
+            return player1ScoreName + "-" + player2ScoreName;
         }
-        return score;
+    }
+
+    private String playerScoreName(int playerScoring) {
+        return switch (playerScoring) {
+            case 0 -> "Love";
+            case 1 -> "Fifteen";
+            case 2 -> "Thirty";
+            case 3 -> "Forty";
+            default -> throw new IllegalArgumentException();
+        };
     }
 
     private int player1ScoreDifference() {
