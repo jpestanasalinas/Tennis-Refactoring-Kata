@@ -26,10 +26,10 @@ public class TennisGame1 implements TennisGame {
             return draftScore();
         } else if ((player1Scoring >=4 || player2Scoring >=4) && Math.abs(player1ScoreDifference()) == 1) {
             if (player1ScoreDifference() == 1) return "Advantage player1";
-            else return "Advantage player2";
+            return "Advantage player2";
         } else if ((player1Scoring >=4 || player2Scoring >=4) && Math.abs(player1ScoreDifference()) > 1) {
             if (player1ScoreDifference() >= 2) return "Win for player1";
-            else return "Win for player2";
+            return "Win for player2";
         } else {
             int tempScore;
             for (int i=1; i<3; i++)
