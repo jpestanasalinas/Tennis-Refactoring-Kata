@@ -21,20 +21,32 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        if (draft()) {
-            return draftScore();
-        } else if ((player1Scoring >=4 || player2Scoring >=4) && Math.abs(player1ScoreDifference()) == 1) {
-            if (player1ScoreDifference() == 1) return "Advantage player1";
-            return "Advantage player2";
-        } else if ((player1Scoring >=4 || player2Scoring >=4) && Math.abs(player1ScoreDifference()) > 1) {
+        if (finishedGame()) {
             if (player1ScoreDifference() >= 2) return "Win for player1";
             return "Win for player2";
+        } else if (draft()) {
+            return draftScore();
+        } else if (advantagePhase()) {
+            if (player1ScoreDifference() == 1) return "Advantage player1";
+            return "Advantage player2";
         } else {
             String player1ScoreName = playerScoreName(player1Scoring);
             String player2ScoreName = playerScoreName(player2Scoring);
 
             return player1ScoreName + "-" + player2ScoreName;
         }
+    }
+
+    private boolean advantagePhase() {
+        return somePlayerExceedsFiftyThreshold() && Math.abs(player1ScoreDifference()) == 1;
+    }
+
+    private boolean finishedGame() {
+        return somePlayerExceedsFiftyThreshold() && Math.abs(player1ScoreDifference()) > 1;
+    }
+
+    private boolean somePlayerExceedsFiftyThreshold() {
+        return player1Scoring >= 4 || player2Scoring >= 4;
     }
 
     private String playerScoreName(int playerScoring) {
