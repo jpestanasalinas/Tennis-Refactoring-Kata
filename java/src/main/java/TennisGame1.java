@@ -43,7 +43,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean somePlayerExceedsFiftyThreshold() {
-        return player1.score >= 4 || player2.score >= 4;
+        return player1.exceedsFiftyThreshold() || player2.exceedsFiftyThreshold();
     }
 
     private String playerScoreName(int playerScoring) {
@@ -91,6 +91,10 @@ public class TennisGame1 implements TennisGame {
 
         public void addPoint() {
             this.score++;
+        }
+
+        public boolean exceedsFiftyThreshold() {
+            return this.score >= 4;
         }
     }
 
