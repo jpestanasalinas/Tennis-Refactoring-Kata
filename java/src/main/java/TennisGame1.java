@@ -1,8 +1,6 @@
 
 public class TennisGame1 implements TennisGame {
-    
-    private int player1Scoring;
-    private int player2Scoring;
+
     private String player1Name;
     private String player2Name;
 
@@ -10,8 +8,6 @@ public class TennisGame1 implements TennisGame {
     private Player player2;
 
     public TennisGame1(String player1Name, String player2Name) {
-        player1Scoring = 0;
-        player2Scoring = 0;
         this.player1Name = player1Name;
         this.player2Name = player2Name;
         this.player1 = new Player(player1Name);
@@ -19,11 +15,9 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == "player1") {
-            player1Scoring += 1;
+        if (playerName == player1.name) {
             player1.addPoint();
         } else {
-            player2Scoring += 1;
             player2.addPoint();
         }
     }
@@ -38,8 +32,8 @@ public class TennisGame1 implements TennisGame {
             if (player1ScoreDifference() == 1) return "Advantage player1";
             return "Advantage player2";
         } else {
-            String player1ScoreName = playerScoreName(player1Scoring);
-            String player2ScoreName = playerScoreName(player2Scoring);
+            String player1ScoreName = playerScoreName(player1.score);
+            String player2ScoreName = playerScoreName(player2.score);
 
             return player1ScoreName + "-" + player2ScoreName;
         }
@@ -54,7 +48,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean somePlayerExceedsFiftyThreshold() {
-        return player1Scoring >= 4 || player2Scoring >= 4;
+        return player1.score >= 4 || player2.score >= 4;
     }
 
     private String playerScoreName(int playerScoring) {
@@ -68,11 +62,11 @@ public class TennisGame1 implements TennisGame {
     }
 
     private int player1ScoreDifference() {
-        return player1Scoring - player2Scoring;
+        return player1.score - player2.score;
     }
 
     private String draftScore() {
-        return switch (player1Scoring) {
+        return switch (player1.score) {
             case 0 -> "Love-All";
             case 1 -> "Fifteen-All";
             case 2 -> "Thirty-All";
@@ -81,7 +75,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean draft() {
-        return player1Scoring == player2Scoring;
+        return player1.score == player2.score;
     }
     public class Player {
         private final String name;
