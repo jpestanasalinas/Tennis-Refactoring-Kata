@@ -14,14 +14,23 @@ public class TennisGame3 implements TennisGame {
 
     public String getScore() {
         if (!isEndGame()) {
-            String score = SCORE_NAMES[pointsPlayer1];
-            if (draft()) return score + "-All";
-            return score + "-" + SCORE_NAMES[pointsPlayer2];
+            return temporalScore();
         } else {
-            if (draft()) return "Deuce";
-            if (isAdvantagePhase()) return "Advantage " + leader();
-            return "Win for " + leader();
+            return finalScore();
         }
+    }
+
+    private String temporalScore() {
+        String score = SCORE_NAMES[pointsPlayer1];
+        if (draft()) return score + "-All";
+        return score + "-" + SCORE_NAMES[pointsPlayer2];
+    }
+
+    private String finalScore() {
+        if (draft()) return "Deuce";
+        if (isAdvantagePhase()) return "Advantage " + leader();
+
+        return "Win for " + leader();
     }
 
     private boolean draft() {
