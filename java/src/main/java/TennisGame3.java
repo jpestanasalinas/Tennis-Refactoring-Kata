@@ -13,7 +13,8 @@ public class TennisGame3 implements TennisGame {
     }
 
     public String getScore() {
-        if (pointsPlayer1 < 4 && pointsPlayer2 < 4 && !(pointsPlayer1 + pointsPlayer2 == 6)) {
+        boolean notEndGame = pointsPlayer1 < 4 && pointsPlayer2 < 4 && !(pointsPlayer1 + pointsPlayer2 == 6);
+        if (notEndGame) {
             String score = SCORE_NAMES[pointsPlayer1];
             if (pointsPlayer1 == pointsPlayer2)
                 return score + "-All";
@@ -23,7 +24,8 @@ public class TennisGame3 implements TennisGame {
                 return "Deuce";
             }
             String leader = pointsPlayer1 > pointsPlayer2 ? player1Name : player2Name;
-            if ((pointsPlayer1 - pointsPlayer2) * (pointsPlayer1 - pointsPlayer2) == 1)
+            boolean advantagePhase = (pointsPlayer1 - pointsPlayer2) * (pointsPlayer1 - pointsPlayer2) == 1;
+            if (advantagePhase)
                 return "Advantage " + leader;
             return "Win for " + leader;
         }
